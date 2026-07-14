@@ -30,10 +30,6 @@ A responsive medicine reminder web application built with **HTML, CSS, and JavaS
 - JavaScript (ES6)
 - Local Storage API
 
-## 📸 Preview
-
-_Add screenshots here._
-
 ## 🌍 Live Demo
 
 🔗 **Live Website:** _Add your GitHub Pages link here_
