@@ -32,7 +32,7 @@ A responsive medicine reminder web application built with **HTML, CSS, and JavaS
 
 ## 🌍 Live Demo
 
-🔗 **Live Website:** _Add your GitHub Pages link here_
+🔗 **Live Website:** _https://sidra-0136.github.io/Medreminder-/_
 
 ## 📂 Project Structure
 
@@ -53,6 +53,12 @@ MedReminder/
 - Event Handling
 - Responsive Web Design
 
+  ## 📌 Note
+
+This project is part of my web development learning journey. I'm continuously improving it by adding new features and enhancing the user experience.
+
 ## 👩‍💻 Developer
 
 Designed & Developed with ❤️ by **Sidra**
+
+⭐ If you found this project helpful, don't forget to leave a star on this repository!
