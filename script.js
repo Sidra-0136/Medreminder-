@@ -607,4 +607,4 @@ function checkMedicineReminders() {
 requestNotificationPermission();
 checkMedicineReminders();
 
-setInterval(checkMedicineReminders, 60000);
+setInterval(checkMedicineReminders, 1000);
