@@ -177,19 +177,25 @@ input[type="time"] {
 
 .reminder-box {
     background: white;
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
     width: 90%;
     max-width: 350px;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .reminder-box button {
-    margin: 8px;
-    padding: 10px 18px;
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .medicine-card {
