@@ -466,6 +466,118 @@ function requestNotificationPermission() {
     
 }
 
+function showReminderPopup(medicine) {
+
+    const popup = document.getElementById("reminder-popup");
+    if (popup.style.display === "flex") {
+    return;
+}
+    const text = document.getElementById("reminder-text");
+    const title = document.querySelector(".reminder-box h2");
+    const takenBtn = document.getElementById("reminder-taken-btn");
+    const closeBtn = document.getElementById("reminder-close-btn");
+
+try {
+
+    if (Notification.permission === "granted") {
+
+        new Notification("💊 Medicine Reminder", {
+            body: `${medicine.medicineName} - Time to take your medicine`
+        });
+
+    }
+
+} catch (error) {
+
+    console.log("Notification error:", error);
+
+}
+
+    if (currentLanguage === "english") {
+
+        title.innerHTML = "💊 Time to Take Your Medicine";
+
+        text.innerHTML = `
+        It's time to take:
+        <br>
+        <strong>${medicine.medicineName}</strong>
+        <br><br>
+        Dosage: ${medicine.dosage}
+        <br><br>
+        After taking your medicine, click "Mark as Taken".
+        <br>
+        Stay healthy! 💙
+        `;
+
+        takenBtn.innerHTML = "Mark as Taken";
+        closeBtn.innerHTML = "Close";
+
+
+    } else {
+
+        title.innerHTML = "💊 دوا لینے کا وقت ہو گیا";
+
+        text.innerHTML = `
+        اب وقت ہے:
+        <br>
+        <strong>${medicine.medicineName}</strong>
+        <br><br>
+        خوراک: ${medicine.dosage}
+        <br><br>
+        دوا لینے کے بعد "دوا لے لیں" کے بٹن پر کلک کریں۔
+        <br>
+        صحت مند رہیں! 💙
+        `;
+
+        takenBtn.innerHTML = "دوا لے لیں";
+        closeBtn.innerHTML = "بند کریں";
+
+    }
+
+
+    popup.style.display = "flex";
+popup.classList.add("show");
+
+    reminderSound.currentTime = 0;
+    reminderSound.play().catch(function(error) {
+    console.log("Sound could not play:", error);
+    });
+
+
+    if ("vibrate" in navigator) {
+        navigator.vibrate([500, 200, 500]);
+    }
+
+
+    takenBtn.onclick = function() {
+
+    medicine.taken = true;
+
+    localStorage.setItem(
+        "medicines",
+        JSON.stringify(medicines)
+    );
+
+remindedMedicines = remindedMedicines.filter(function(id) {
+    return id !== medicine.id;
+});
+
+    popup.style.display = "none";
+popup.classList.remove("show");
+
+    renderMedicines();
+
+};
+
+    closeBtn.onclick = function() {
+
+        popup.style.display = "none";
+        popup.classList.remove("show");
+
+    };
+
+}
+
 function checkMedicineReminders() {
     
     const now = new Date();
@@ -481,34 +593,8 @@ function checkMedicineReminders() {
             !medicine.taken &&
             !remindedMedicines.includes(medicine.id)
         ) {
-            reminderSound.currentTime = 0;
-            reminderSound.play();
-            
-            if (currentLanguage === "english") {
-                
-                alert(`💊 Time to Take Your Medicine!
-
-It's time to take:
-${medicine.medicineName}
-
-After taking your medicine, please click the
-"Mark as Taken" button.
-
-Stay healthy! 💙`);
-                
-            } else {
-                
-                alert(`💊 دوا لینے کا وقت ہو گیا!
-
-اب وقت ہے:
-${medicine.medicineName}
-
-دوا لینے کے بعد براہِ کرم
-"دوا لے لیں" کے بٹن پر کلک کریں۔
-
-صحت مند رہیں! 💙`);
-                
-            }
+        
+            showReminderPopup(medicine);
             
             remindedMedicines.push(medicine.id);
             
