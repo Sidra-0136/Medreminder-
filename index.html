@@ -2,89 +2,82 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./style.css" />
-  <title>Med Reminder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Med Reminder</title>
 </head>
 
 <body>
-  <header>
-    <h1>💊 Med Reminder</h1>
-    <p>Never miss your medication</p>
-    <button type="button" id="add-btn">+ Add Medicine</button>
-  
-  <form id="medicine-form" class="medicine-form hidden">
-
-    <h2>Add New Medicine</h2>
-
-    <label for="medicine-name">Medicine Name</label>
-    <input
-        type="text"
-        id="medicine-name"
-        placeholder="Enter medicine name" required
-    >
-
-    <label for="dosage">Dosage</label>
-    <input
-        type="text"
-        id="dosage"
-        placeholder="e.g. 500 mg" 
-    >
-
-    <label for="time">Time</label>
-    <input type="time"name="" id="time" required/>
-
-    <p>Repeat</p>
-
-    <label>
-        <input value="Daily" type="radio" name="repeat" id="daily" checked>
-        Daily
-    </label>
-
-    <label>
-        <input value="Specific Days" type="radio" name="repeat" id="specific">
-        Specific Days
-    </label>
-
-<div class="days" id="days">
-
-    <label><input type="checkbox" value="Monday"> Mon</label>
-
-    <label><input type="checkbox" value="Tuesday"> Tue</label>
-
-    <label><input type="checkbox" value="Wednesday"> Wed</label>
-
-    <label><input type="checkbox" value="Thursday"> Thu</label>
-
-    <label><input type="checkbox" value="Friday"> Fri</label>
-
-    <label><input type="checkbox" value="Saturday"> Sat</label>
-
-    <label><input type="checkbox" value="Sunday"> Sun</label>
-
-</div>
-
-    <div class="form-buttons">
-        <button type="submit">Save</button>
-        <button type="button" id="cancel-btn">Cancel</button>
+    <header>
+        <h1 id="title">💊 Med Reminder</h1>
+        <p id="tagline">Never miss your medication</p>
+        <button id="language-btn">🌐 اردو</button>
+        <button type="button" id="add-btn">+ Add Medicine</button>
+        
+        <form id="medicine-form" class="medicine-form hidden">
+            
+            <h2 id="form-title">Add New Medicine</h2>
+            
+            <label id="medicine-label" for="medicine-name">Medicine Name</label>
+            <input type="text" id="medicine-name" placeholder="Enter medicine name" required>
+            
+            <label id="dosage-label" for="dosage">Dosage</label>
+            <input type="text" id="dosage" placeholder="e.g. 500 mg">
+            
+            <label id="time-label" for="time">Time</label>
+            <input type="time" name="" id="time" required />
+            
+            <p id="repeat-label">Repeat</p>
+            
+            <label id="daily-label">
+                <input value="Daily" type="radio" name="repeat" id="daily" checked>
+                Daily
+            </label>
+            
+            <label id="specific-label">
+                <input value="Specific Days" type="radio" name="repeat" id="specific">
+                Specific Days
+            </label>
+            
+            <div class="days" id="days">
+                
+                <label id="monday-label"><input type="checkbox" value="Monday"> Monday</label>
+                
+                <label id="tuesday-label"><input type="checkbox" value="Tuesday"> Tuesday</label>
+                
+                <label id="wednesday-label"><input type="checkbox" value="Wednesday"> Wednesday</label>
+                
+                <label id="thursday-label"><input type="checkbox" value="Thursday"> Thursday</label>
+                
+                <label id="friday-label"><input type="checkbox" value="Friday"> Friday</label>
+                
+                <label id="saturday-label"><input type="checkbox" value="Saturday"> Saturday</label>
+                
+                <label id="sunday-label"><input type="checkbox" value="Sunday"> Sunday</label>
+                
+            </div>
+            
+            <div class="form-buttons">
+                <button id="save-btn" type="submit">Save</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+            </div>
+            
+        </form>
+        
+    </header>
+    <h2 id="medicine-count">Today's Medicines (0)</h2>
+    <div id="medicine-container">
+        <div id="placeholder" class="placeholder">
+            <h3 id="placeholder-title">No medicines added yet</h3>
+            <p id="placeholder-text">Click "Add Medicine" to get started</p>
+        </div>
     </div>
-
-</form>
-  
-  </header>
-  <h2>Today's Medicines</h2>
-  <div id="medicine-container" >
-    <div id="placeholder" class="placeholder">
-      <h3>No medicines added yet</h3>
-      <p>Click "Add Medicine" to get started</p>
-    </div>
-  </div>
-  <footer>
-    © 2026 Med Reminder • Stay Healthy 💙
-Designed & Developed by Sidra
-  </footer>
-  <script src="./script.js"></script>
+    <footer>
+        © 2026 Med Reminder • Stay Healthy 💙
+        Designed & Developed by Sidra
+    </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>

@@ -2,54 +2,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Reset */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Body */
-body{
-    font-family:'Poppins',sans-serif;
-    background:#F5F8FF;
-    color:#333;
-    padding:20px;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F5F8FF;
+    color: #333;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
 }
 
 /* Header */
-header{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    margin-bottom:35px;
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 35px;
 }
 
 /* Logo & Title */
-h1{
-    font-size:2.2rem;
-    color:#2563eb;
+h1 {
+    font-size: 2.2rem;
+    color: #2563eb;
     text-align: center;
 }
 
 /* Tagline */
-header p{
-    font-size:1rem;
-    color:#666;
+header p {
+    font-size: 1rem;
+    color: #666;
     text-align: center;
 }
 
+#language-btn{
+    width: 170px;
+    height: 46px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    background: #0f766e;
+}
+
+#language-btn:hover {
+    background: #115e59;
+}
+
+
+
+
 /* Add Medicine Button */
-button{
-    width:310px;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:1.2rem;
+button {
+    width: 310px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 1.2rem;
     font-weight: 600;
-    cursor:pointer;
-    transition:.3s;
+    cursor: pointer;
+    transition: .3s;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,78 +74,89 @@ button{
     margin: 0 auto;
 }
 
-    button:hover{
-    background:#1d4ed8;
-    transform:translateY(-2px);
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 /* Section Heading */
-h2{
-    margin-bottom:20px;
-    color:#1e293b;
+h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+    font-size: 1.5rem;
 }
 
-.medicine-form{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-    margin:30px 0;
+.medicine-form {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+    margin: 30px 0;
 }
 
-.medicine-form h2{
-    margin-bottom:20px;
+.medicine-form h2 {
+    margin-bottom: 20px;
 }
 
-.medicine-form label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:8px;
-    font-weight:600;
+.medicine-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .medicine-form input[type="text"],
-.medicine-form input[type="time"]{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
+.medicine-form input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
-.form-buttons{
-    display:flex;
-    gap:15px;
-    margin-top:25px;
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
 }
 
-.form-buttons button{
-    flex:1;
+.form-buttons button {
+    flex: 1;
 }
 
-input[type="time"]{
-    background-color:#ffffff;
+input[type="time"] {
+    background-color: #ffffff;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-#days{
+#days {
     display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#days label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
 }
 
 /* Medicine Container */
-.placeholder{
-    min-height:250px;
-    background:white;
-    border:2px dashed #cbd5e1;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:40px;
+.placeholder {
+    min-height: 250px;
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
-.placeholder{
+.placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,32 +165,37 @@ input[type="time"]{
     height: 250px;
 }
 
-.medicine-card{
+.medicine-card {
     background: #ffffff;
     border: 2px solid #2563eb;
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
 }
 
-.medicine-card h3{
-    color:#1e293b;
-    margin-bottom:10px;
+.medicine-card:hover {
+    transform: translateY(-3px);
 }
 
-.medicine-card p{
-    margin:8px 0;
-    color:#475569;
+.medicine-card h3 {
+    color: #1e293b;
+    margin-bottom: 10px;
 }
 
-.card-buttons{
+.medicine-card p {
+    margin: 8px 0;
+    color: #475569;
+}
+
+.card-buttons {
     display: flex;
     gap: 10px;
     margin-top: 18px;
 }
 
-.card-buttons button{
+.card-buttons button {
     flex: 1;
     height: 45px;
     width: 100%;
@@ -179,36 +212,60 @@ input[type="time"]{
 }
 
 /* Mark as Taken */
-.taken-btn{
+.taken-btn {
     background: #22c55e;
 }
 
-.taken-btn:hover{
+.taken-btn:hover {
     background: #16a34a;
 }
 
 /* Edit */
-.edit-btn{
+.edit-btn {
     background: #f59e0b;
 }
 
-.edit-btn:hover{
+.edit-btn:hover {
     background: #d97706;
 }
 
 /* Delete */
-.delete-btn{
+.delete-btn {
     background: #ef4444;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
     background: #dc2626;
 }
 
 /* Footer */
-footer{
-    margin-top: 90px;
-    text-align:center;
-    color:#666;
-    font-size:.9rem;
+footer {
+    margin-top: 60px;
+    text-align: center;
+    color: #666;
+    font-size: .9rem;
+}
+
+@media (min-width: 768px) {
+    
+    .medicine-card {
+        padding: 30px;
+    }
+    
+    .medicine-form {
+        padding: 30px;
+    }
+    
+    button {
+        max-width: 380px;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    header p {
+        font-size: 1.2rem;
+    }
+    
 }
