@@ -447,6 +447,8 @@ languageBtn.addEventListener("click", function() {
 
 function requestNotificationPermission() {
     
+    alert(Notification.permission);
+    
     if (!("Notification" in window)) {
         alert("This browser does not support notifications.");
         return;
