@@ -1,5 +1,6 @@
 let editingCard = null;
 let remindedMedicines = [];
+let lastReminderDate = new Date().toDateString();
 const reminderSound = new Audio("notification.wav");
 let medicines = JSON.parse(localStorage.getItem("medicines")) || [];
 const form = document.getElementById("medicine-form");
@@ -64,7 +65,7 @@ const translations = {
         cardDosage: "خوراک",
         cardTime: "وقت",
         cardRepeat: "دہرائیں",
-        cardTaken: "دوا لے لیں",
+        cardTaken: "دوا لے لی",
         cardTakenDone: "✅ دوا لی جا چکی ہے",
         cardEdit: "✏ ترمیم",
         cardDelete: "🗑 حذف کریں",
@@ -176,6 +177,12 @@ function createMedicineCard(medicine) {
     const text = translations[currentLanguage];
     
     let repeatDisplay;
+    let dosageDisplay = "";
+
+if (medicine.dosage.trim() !== "") {
+    dosageDisplay =
+        `<p>💉 ${text.cardDosage}: ${medicine.dosage}</p>`;
+}
     
     if (medicine.repeat === "Daily") {
         repeatDisplay = text.daily;
@@ -187,7 +194,7 @@ function createMedicineCard(medicine) {
     
     card.innerHTML = `
         <h3>💊 ${medicine.medicineName}</h3>
-<p>💉 ${text.cardDosage}: ${medicine.dosage}</p>
+${dosageDisplay}
 <p>⏰ ${text.cardTime}: ${medicine.time}</p>
 <p>🔁 ${text.cardRepeat}: ${repeatDisplay}</p>
 
@@ -345,17 +352,7 @@ form.addEventListener("submit", function(event) {
             
         }
         
-        editingCard.querySelector("h3").textContent =
-            `💊 ${medicineName}`;
         
-        editingCard.querySelectorAll("p")[0].textContent =
-            `💉 ${text.cardDosage}: ${dosage}`;
-        
-        editingCard.querySelectorAll("p")[1].textContent =
-            `⏰ ${text.cardTime}: ${time}`;
-        
-        editingCard.querySelectorAll("p")[2].textContent =
-            `🔁 ${text.cardRepeat}: ${repeatDisplay}`;
         
         const medicineToUpdate = medicines.find(function(item) {
             return item.id === Number(editingCard.dataset.id);
@@ -372,6 +369,7 @@ form.addEventListener("submit", function(event) {
             medicineToUpdate.repeatText = repeatText;
             
             localStorage.setItem("medicines", JSON.stringify(medicines));
+            renderMedicines();
             
         }
         
@@ -447,8 +445,6 @@ languageBtn.addEventListener("click", function() {
 
 function requestNotificationPermission() {
     
-    alert(Notification.permission);
-    
     if (!("Notification" in window)) {
         alert("This browser does not support notifications.");
         return;
@@ -504,8 +500,9 @@ try {
         <br>
         <strong>${medicine.medicineName}</strong>
         <br><br>
-        Dosage: ${medicine.dosage}
-        <br><br>
+        ${medicine.dosage.trim() !== ""
+? `Dosage: ${medicine.dosage}<br><br>`
+: ""}   
         After taking your medicine, click "Mark as Taken".
         <br>
         Stay healthy! 💙
@@ -524,14 +521,15 @@ try {
         <br>
         <strong>${medicine.medicineName}</strong>
         <br><br>
-        خوراک: ${medicine.dosage}
-        <br><br>
-        دوا لینے کے بعد "دوا لے لیں" کے بٹن پر کلک کریں۔
+        ${medicine.dosage.trim() !== ""
+? `خوراک: ${medicine.dosage}<br><br>`
+: ""}
+        دوا لینے کے بعد "دوا لے لی" کے بٹن پر کلک کریں۔
         <br>
         صحت مند رہیں! 💙
         `;
 
-        takenBtn.innerHTML = "دوا لے لیں";
+        takenBtn.innerHTML = "دوا لے لی";
         closeBtn.innerHTML = "بند کریں";
 
     }
@@ -583,18 +581,42 @@ popup.classList.remove("show");
 function checkMedicineReminders() {
     
     const now = new Date();
+    const todayDate = now.toDateString();
+
+if (todayDate !== lastReminderDate) {
+
+    remindedMedicines = [];
+    lastReminderDate = todayDate;
+
+}
     
     const currentTime =
         String(now.getHours()).padStart(2, "0") + ":" +
         String(now.getMinutes()).padStart(2, "0");
+        const weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+];
+
+const today = weekDays[now.getDay()];
     
     medicines.forEach(function(medicine) {
         
         if (
-            medicine.time === currentTime &&
-            !medicine.taken &&
-            !remindedMedicines.includes(medicine.id)
-        ) {
+    medicine.time === currentTime &&
+    !medicine.taken &&
+    !remindedMedicines.includes(medicine.id) &&
+    (
+        medicine.repeat === "Daily" ||
+        medicine.selectedDays.includes(today)
+    )
+)
+         {
         
             showReminderPopup(medicine);
             
