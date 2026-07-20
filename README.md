@@ -3,7 +3,7 @@
 ![HTML](https://img.shields.io/badge/HTML-5-orange)
 ![CSS](https://img.shields.io/badge/CSS-3-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
-![Status](https://img.shields.io/badge/Status-In%20Progress-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
 A responsive medicine reminder web application built with **HTML, CSS, and JavaScript**.
 
@@ -12,16 +12,21 @@ A responsive medicine reminder web application built with **HTML, CSS, and JavaS
 - ➕ Add new medicines
 - ✏️ Edit medicine details
 - 🗑️ Delete medicines
-- ✅ Mark medicine as taken
+- ✅ Mark medicines as taken
 - 💾 Local Storage support
-- 🔄 Data persists after page refresh
+- 🔔 Medicine reminder popup
+- 🔊 Reminder sound
+- 📳 Phone vibration support
+- 🌐 English & Urdu language support
 - 📅 Daily or Specific Days scheduling
+- ⏰ Time-based reminders
 - 📱 Responsive design for mobile and desktop
 
-## 🚀 Upcoming Features
 
-- 🔔 Reminder notifications
-- 🌐 English / Urdu language support
+## 🚀 Future Improvements
+
+- 📦 Progressive Web App (PWA)
+
 
 ## 🛠️ Built With
 
@@ -56,6 +61,12 @@ MedReminder/
   ## 📌 Note
 
 This project is part of my web development learning journey. I'm continuously improving it by adding new features and enhancing the user experience.
+
+## 💡 About This Project
+
+Med Reminder is a bilingual medicine reminder web application developed using HTML, CSS, and JavaScript. It helps users organize their medicines by allowing them to add, edit, delete, and mark medicines as taken.
+
+The application supports daily and specific-day schedules, reminder popups, notification sound, vibration, and Local Storage, ensuring medicine data remains available even after refreshing the page.
 
 ## 👩‍💻 Developer
 
